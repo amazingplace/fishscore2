@@ -1,0 +1,40 @@
+# Project: fishscore2
+# Makefile created by Dev-C++ 5.11
+
+CPP      = g++.exe -D__DEBUG__
+CC       = gcc.exe -D__DEBUG__
+WINDRES  = windres.exe
+OBJ      = main.o exportdata.o algorithm.o arrary_process.o list.o
+LINKOBJ  = main.o exportdata.o algorithm.o arrary_process.o list.o
+LIBS     = -L"D:/IDE/devc++/Dev-Cpp/MinGW64/lib" -L"D:/IDE/devc++/Dev-Cpp/MinGW64/x86_64-w64-mingw32/lib" -static-libgcc -g3
+INCS     = -I"D:/IDE/devc++/Dev-Cpp/MinGW64/include" -I"D:/IDE/devc++/Dev-Cpp/MinGW64/x86_64-w64-mingw32/include" -I"D:/IDE/devc++/Dev-Cpp/MinGW64/lib/gcc/x86_64-w64-mingw32/4.9.2/include"
+CXXINCS  = -I"D:/IDE/devc++/Dev-Cpp/MinGW64/include" -I"D:/IDE/devc++/Dev-Cpp/MinGW64/x86_64-w64-mingw32/include" -I"D:/IDE/devc++/Dev-Cpp/MinGW64/lib/gcc/x86_64-w64-mingw32/4.9.2/include" -I"D:/IDE/devc++/Dev-Cpp/MinGW64/lib/gcc/x86_64-w64-mingw32/4.9.2/include/c++"
+BIN      = fishscore2.exe
+CXXFLAGS = $(CXXINCS) -g3
+CFLAGS   = $(INCS) -g3
+RM       = rm.exe -f
+
+.PHONY: all all-before all-after clean clean-custom
+
+all: all-before $(BIN) all-after
+
+clean: clean-custom
+	${RM} $(OBJ) $(BIN)
+
+$(BIN): $(OBJ)
+	$(CC) $(LINKOBJ) -o $(BIN) $(LIBS)
+
+main.o: main.c
+	$(CC) -c main.c -o main.o $(CFLAGS)
+
+exportdata.o: exportdata.c
+	$(CC) -c exportdata.c -o exportdata.o $(CFLAGS)
+
+algorithm.o: algorithm.c
+	$(CC) -c algorithm.c -o algorithm.o $(CFLAGS)
+
+arrary_process.o: arrary_process.c
+	$(CC) -c arrary_process.c -o arrary_process.o $(CFLAGS)
+
+list.o: list.c
+	$(CC) -c list.c -o list.o $(CFLAGS)
